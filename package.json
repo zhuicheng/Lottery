@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/zhuicheng/Lottery/issues"
   },
-  "homepage": "https://github.com/zhuicheng/Lottery"
+  "homepage": "https://github.com/zhuicheng/Lottery",
+  "dependencies": {
+    "ejs": "~1.0.0"
+  }
 }
