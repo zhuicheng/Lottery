@@ -25,6 +25,7 @@
     "mysql": "~2.5.2",
     "body-parser": "~1.9.2",
     "jquery": "~1.7.3",
-    "request": "~2.48.0"
+    "request": "~2.48.0",
+    "node-uuid": "~1.4.1"
   }
 }
