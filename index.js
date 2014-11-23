@@ -4,20 +4,35 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var express = require('express');
 
+require('colors'); // change console's style
+require('./lib/common'); // extend prototype's function
+
+var utils = require('./lib/utils');
+var dao = require('./lib/dao');
 var fetch = require('./lib/service/fetch');
 
 var app = express();
-app.use(express.static(path.join(__dirname, './public')));
-app.use(bodyParser.urlencoded({
+app.use(express.static(path.join(__dirname, './public'))); // set static resource
+app.use(bodyParser.urlencoded({ // help the app for get parameter
 	extended: false
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // help the app for get parameter
 
 app.get('/*', function(req, res) {
-	fetch.fetchData(function(arr) {
-		res.send(arr.join(''));
-	});
+	res.send(new Date());
 });
 
-app.listen(8888);
-console.log('Server start..');
+utils.cascade([ function(next) {
+	// if you want to run this app, you must check the database before it
+	dao.init(next);
+}, function(next) {
+	// check data is bran-new or not
+	fetch.fetchData(next);
+} ], function(err) {
+	if (err) {
+		console.log('%s'.red, err);
+		return false;
+	}
+	app.listen(8888);
+	console.log('Server start..'.green);
+});
