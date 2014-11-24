@@ -13,10 +13,10 @@ var fetch = require('./lib/service/fetch');
 
 var app = express();
 app.use(express.static(path.join(__dirname, './public'))); // set static resource
-app.use(bodyParser.urlencoded({ // help the app for get parameter
+app.use(bodyParser.urlencoded({ // parse parameter from request
 	extended: false
 }));
-app.use(bodyParser.json()); // help the app for get parameter
+app.use(bodyParser.json()); // parse parameter from request
 
 app.get('/*', function(req, res) {
 	res.send(new Date());
