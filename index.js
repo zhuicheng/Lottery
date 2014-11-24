@@ -8,8 +8,10 @@ require('colors'); // change console's style
 require('./lib/common'); // extend prototype's function
 
 var utils = require('./lib/utils');
-var dao = require('./lib/dao');
+var service = require('./lib/service');
 var fetch = require('./lib/service/fetch');
+
+var T_LOTTERY = require('./lib/model/T_LOTTERY');
 
 var app = express();
 app.use(express.static(path.join(__dirname, './public'))); // set static resource
@@ -18,13 +20,19 @@ app.use(bodyParser.urlencoded({ // parse parameter from request
 }));
 app.use(bodyParser.json()); // parse parameter from request
 
-app.get('/*', function(req, res) {
-	res.send(new Date());
+app.use('/*', function(req, res) {
+	service.select(utils.clone(T_LOTTERY), function(err, rows, fields) {
+		if (err) {
+			console.log('%s'.red, err);
+			return false;
+		}
+		res.send(JSON.stringify(rows));
+	});
 });
 
 utils.cascade([ function(next) {
 	// if you want to run this app, you must check the database before it
-	dao.init(next);
+	service.init(next);
 }, function(next) {
 	// check data is bran-new or not
 	fetch.fetchData(next);
