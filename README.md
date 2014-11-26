@@ -1,11 +1,2 @@
-
-
 # Lottery
-
-
-
-## Usage
-
-
-
-## Developing
+Fetch data from the [network](http://kaijiang.zhcw.com/zhcw/html/ssq/list.html) and insert into local database, then we can analyse it expediently.In this app, I use some prevalent modules like [express](https://github.com/strongloop/express), [async](https://github.com/caolan/async), [request](https://github.com/request/request) and so on, may be it can help you to learn how to build a Node app.
