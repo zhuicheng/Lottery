@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title><%=title %></title>
-<script type="text/javascript" src="./jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="./jquery/dist/jquery.min.js"></script>
 
 <style type="text/css">
 table {
