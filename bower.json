@@ -1,0 +1,23 @@
+{
+  "name": "Lottery",
+  "main": "index.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/zhuicheng/Lottery",
+  "authors": [
+    "馬驍 <wawl89757@126.com>"
+  ],
+  "keywords": [
+    "Lottery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
