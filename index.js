@@ -35,7 +35,17 @@ app.use('/*', function(req, res) {
 			console.log('%s'.red, err);
 			return false;
 		}
-		res.send(JSON.stringify(rows));
+
+		fs.readFile(path.join(__dirname, './views/index.jsp'), function(err, fd) {
+			if (err) {
+				console.log('%s'.red, err);
+				return false;
+			}
+
+			res.send(ejs.render(fd.toString(), {
+				data: rows
+			}));
+		});
 	});
 });
 
