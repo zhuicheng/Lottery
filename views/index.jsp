@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%=title %></title>
 <script type="text/javascript" src="./jquery/dist/jquery.js"></script>
 
 <style type="text/css">

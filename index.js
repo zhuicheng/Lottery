@@ -43,6 +43,7 @@ app.use('/*', function(req, res) {
 			}
 
 			res.send(ejs.render(fd.toString(), {
+				title: process.env.PWD.substring(process.env.PWD.lastIndexOf('/') + 1),
 				data: rows
 			}));
 		});
